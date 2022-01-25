@@ -1,0 +1,939 @@
+/* -------------------------------------------------------
+I have used GRIDBOX and pure CSS to make it responsive
+    ------------------------------------------------
+    1. The most important thing in this website is responsive menu
+        search bar so that student can easily find things
+    --------------------------------------------------
+    2. In mobile devices menu must be small and don't change the 
+        look of website
+    --------------------------------------------------
+    3. the slider in website changes number of items in mobile
+    --------------------------------------------------
+    4. The gallery tab show slider in mobile devices but not in desktop
+        so that it doesn't take much space in smaller devices
+    --------------------------------------------------    
+    5. The hover effect didn't work in mobile so we have to replace it 
+        with active class which works well
+    --------------------------------------------------    
+    6. The footer must be small and compact and atleast have a button 
+        which leads to the top of page because user is not going to scrol 
+        all the way up
+    --------------------------------------------------    
+    7. In the website student look for notice and important links so i 
+        suggest to put latest news and quick links section to the top after header
+    --------------------------------------------------
+    8. When a button or link is click a transparent blue color highligh
+        in mobile devices so to remove that i've used 
+        **-webkit-tap-highlight-color : transparent**
+    --------------------------------------------------
+    9. And on clicking button or link or image if you provide a link
+        to them it get selected on double click in so to avoid that
+        we used **user-select:none**
+    --------------------------------------------------
+    10. I've remove the webiste scrollbar so that it look classy and width
+        and height must look good
+    I'm student of Computer Department
+    --------------------------------------------------
+    11. There's no need to give button on slider because in mobile device 
+        a person can slide using finger without pressing a button and in desktop
+        person can just drag SO
+    --------------------------------------------------
+---------------------------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+:root{
+    --font:#404040;
+    --searchBtn: #FF0000;
+    --searchBack: #FDFDFD;
+    --heading:#F9F9F9;
+    --background:#06213F;
+    --hover:rgb(238, 232, 232);
+    --title:#979797;
+    --galDot: #b1b1b1;
+    --dotActive: #747474;
+    --tabBg:rgb(242, 242, 242);
+    --activeTab:rgb(229, 229, 229);
+    --moreBtnBg:#5E5DF0;
+    --moreBtn:#FFFFFF;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    border: none;
+    list-style-type: none;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent !important;
+}
+a, button, img, li{
+    user-select: none;
+}
+::-webkit-scrollbar{
+    display: none;
+}
+html{
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+body{
+    background: var(--background);
+}
+
+/* -----------------header start ---------------*/
+header{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+}
+.clg_name{
+    display: flex;
+    grid-row: 1;
+    grid-column: 1;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    margin: 2.5rem;
+}
+.name{
+    display: grid;
+    gap: .5rem;
+}
+.name h1{
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 3.5rem;
+    color: var(--heading);
+}
+.name h2{
+    text-transform: capitalize;
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--heading);
+}
+form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-row: 1;
+    grid-column: 2;
+}
+form input{
+    padding: .5rem 1rem;
+    font-size: 1.6rem;
+    border-radius: 1rem 0 0 1rem;
+    outline: none;
+    background: var(--searchBack);
+    color: var(--font);
+}
+form button{
+    font-size: 1.6rem;
+    padding: .5rem 1rem;
+    border-radius: 0 1rem 1rem 0 ;
+    background: var(--searchBtn);
+    color: var(--searchBack);
+}
+nav{
+    grid-row: 2;
+    grid-column: 1/ span 2;
+}
+.menu{
+    display: flex;
+    width: 100%;
+    z-index: 9999;
+    font-size: 1.8rem;
+    justify-content: center;
+    background: var(--searchBack);
+    color: var(--font);
+}
+.menu li{
+    padding:1rem 2rem;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+.menu li a{
+    color: var(--font);
+}
+.menu li:hover{
+    background: var(--hover);
+}
+.dropBtn,.nestedDropBtn{
+    position: relative;
+}
+.dropBtn:hover .dropDown{
+    display: block;
+}
+.nestedDropBtn:hover .nestedDropDown{
+    display: block;
+}
+.dropDown,.nestedDropDown{
+    position: absolute;
+    z-index: 9999;
+    background: var(--searchBack);
+    width: max-content;
+    color: var(--font);
+    display: none;
+}
+.show{
+    display: block;
+}
+.dropDown{
+    left: 0;
+    top: 100%;
+}
+.nestedDropDown{
+    top: 0;
+    right:100%;
+}
+.menuIcon{
+    color: var(--heading);
+    font-size: 3rem;
+    display: none;
+    cursor: pointer;
+}
+.close{
+    display: none;
+}
+/* -----------------header end ---------------*/
+
+/* -----------------slideshow/message start ---------------*/
+.bulletin{
+    font-size: 2.3rem;
+    color: var(--heading);
+    font-weight: 400;
+    text-transform: capitalize;
+    padding-right: 1rem;
+}
+.message{
+    font-size: 1.8rem;
+    color: var(--heading);
+}
+.announcementDiv{
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    width: 100vw;
+    padding: 1rem 2rem;
+}
+.slideImgDiv{
+    width: 100vw;
+}
+.heroSection{
+    display: grid;
+    grid-template-rows: auto auto;
+}
+.slideShow{
+    grid-row: 1;
+    z-index: 1;
+    overflow: hidden;
+}
+/* -----------------slideshow/message end ---------------*/
+
+/* -----------------link/events start ---------------*/
+.title{
+    font-size: 2.3rem;
+    font-weight: 400;
+    text-transform: capitalize;
+    color: var(--title);
+    border-bottom: .1rem solid var(--title);
+    padding-bottom: 1rem;
+}
+.linkDiv li a , .newsDiv li a{
+    font-size: 1.7rem;
+    color: var(--font);
+    font-weight: 400;
+}
+.linkDiv li , .newsDiv li{
+    padding: .5rem 1rem;
+    border-bottom: .1rem solid var(--font);
+    cursor: pointer;
+    margin:  1rem;
+    font-size: 2rem;
+    list-style-type: ">";
+    font-weight: 700;
+    font-family: fangsong;
+}
+.linkDiv , .newsDiv{
+    height: 100%;
+    overflow-y: scroll;
+    list-style-type: ">";
+}
+.linkDiv::-webkit-scrollbar , .newsDiv::-webkit-scrollbar {
+    width: .5rem;
+    background: var(--galDot);
+    display: block;
+}
+.linkDiv::-webkit-scrollbar-thumb,  .newsDiv::-webkit-scrollbar-thumb {
+    background: var(--dotActive);
+    border-radius: 1rem;
+}
+.impLinks, .latest{
+    height: 50rem;
+}
+.impLinks, .latest, .gallery , .tourism{
+    background: var(--heading);
+    border-radius: 1rem;
+    padding: 2rem;
+    display: grid;
+    gap: 2rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0rem .6rem 1.2rem -0.2rem, rgba(0, 0, 0, 0.3) 0rem .3rem .7rem -0.3rem;
+}
+.important{
+    grid-template-columns: 1fr 2fr;
+}
+.important, .lookOut{
+    display: grid;
+    gap: 3rem;
+    background: var(--heading);
+    padding: 4rem;
+}
+/* -----------------link/events end ---------------*/
+
+/* -----------------gallery/tourism start ---------------*/
+.lookOut{
+    grid-template-columns: 1fr 1fr;
+}
+.gallery{
+    position: relative;
+    padding-bottom: 3rem;
+    height: fit-content;
+}
+#galCarousel{
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 1rem;
+}
+.gImg img{
+    width: 100%;
+    border-radius: 1rem;
+}
+.owl-dots{
+    display: flex;
+    justify-content: center;
+}
+.owl-carousel button.owl-dot{
+    height: 1rem;
+    width: 1rem;
+    background-color: var(--galDot);
+    margin: 0 .5rem;
+    border-radius: .3rem;
+    cursor: pointer;
+}
+.owl-carousel button.owl-dot.active{
+    background-color: var(--dotActive);
+}
+.gallery a{
+    font-size: 1.7rem;
+    position: absolute;
+    bottom: 1rem;
+    text-decoration: underline;
+    right: 2rem;
+}
+.tourism{
+    padding: 0;
+    align-items: start;
+    display: block;
+}
+.tabNav{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.tabBtn{
+    font-size: 2rem;
+    text-transform: capitalize;
+    padding: 2rem;
+    cursor: pointer;
+    color: var(--dotActive);
+    background: var(--tabBg);
+}
+.tabBtn:first-child{
+    border-top-left-radius: 1rem;
+}
+.tabBtn:last-child{
+    border-top-right-radius: 1rem;
+}
+.activeTab{
+    color: var(--font);
+    border-bottom: .5rem solid var(--background);
+    background: var(--activeTab);
+}
+.tabContent{
+    display: none;
+    padding: 2rem;
+    line-height: 2.75rem;
+    font-size: 1.8rem;
+}
+.tabContent img{
+    width: 25rem;
+    border-radius: 1rem;
+    float: left;
+    margin: 1rem ;
+    margin-right: 2rem;
+}
+.tabContent p{
+    color: var(--font);
+}
+.tabContent a{
+    float: right;
+    padding: .8rem 1.8rem;
+    border-radius: 99rem;
+    box-shadow: var(--moreBtnBg) 0rem 1rem 2rem -1rem;
+    background: var(--moreBtnBg);
+    color: var(--moreBtn);
+    font-size: 1.6rem;
+    text-transform: capitalize;
+    user-select: none;
+    -webkit-user-select: none;
+}
+/* -----------------gallery/tourism end ---------------*/
+
+/* -----------------celebration start ---------------*/
+.celebration h1{
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    color: var(--heading);
+    font-weight: 400;
+    text-align: center;
+}
+.celebration{
+    display: grid;
+    justify-items: center;
+    gap: 3rem;
+    padding: 4rem;
+}
+#celebrateCarousel{
+    overflow: hidden;
+    width: 85%;
+}
+#celebrateCarousel .item{
+    width: 20rem;
+}
+/* -----------------celebration end ---------------*/
+
+/* -----------------page button start ---------------*/
+.pageOptn{
+    display: grid;
+    grid-template-columns: repeat(4, 20%);
+    justify-content: center;
+    gap: 3rem;
+    padding: 4rem;
+    background: var(--searchBack);
+    box-shadow: rgba(0, 0, 0, 0.02) 0rem .1rem .3rem 0rem, rgba(27, 31, 35, 0.15) 0rem 0rem 0rem .1rem;
+}
+.pageBtn{
+    background: var(--searchBack);
+    display: grid;
+    cursor: pointer;
+    padding: 2rem;
+    border-radius: 2rem;
+    justify-items: center;
+    align-content: center;
+    gap: 1rem;
+    font-size: 1.7rem;
+    box-shadow: .1rem .5rem .4rem .3rem #04101f40;
+}
+.pageIcon{
+    background: var(--background);
+    width: fit-content;
+    border-radius: 50%;
+    box-shadow: .2rem .7rem .9rem #02080f40;
+    transition: all .5s;
+}
+.pageBtn:hover .pageIcon{
+    transform: scale(.8);
+}
+.pageIcon img{
+    width: 6rem;
+    margin: 1.5rem;
+}
+/* -----------------page button end ---------------*/
+
+/* -----------------footer start ---------------*/
+footer{
+    color: var(--heading);
+    display: grid;
+}
+.copyright{
+    font-size: 1.5rem;
+    border-top: .1rem solid var(--heading);
+    display: grid;
+    padding: 1rem;
+    justify-items: center;
+}
+.contactInfo{
+    display: grid;
+    justify-content: space-around;
+    grid-template-columns: auto auto;
+    position: relative;
+}
+.toHome{
+    position: absolute;
+    background: var(--searchBack);
+    padding: .2rem;
+    border-radius: .3rem;
+    cursor: pointer;
+    right: 2rem;
+    bottom: 2rem;
+}
+.address h1 , .contact h1{
+    text-transform: capitalize;
+    font-weight: 400;
+    font-size: 2.5rem;
+}
+.address h2 , .contactDetail{
+    font-weight: 400;
+    font-size: 1.6rem;
+    padding-left: 1rem;
+}
+.address iframe{
+    width: 100%;
+    padding-left: 1rem;
+}
+.address , .contact{
+    display: grid;
+    gap: .8rem;
+    justify-content: center;
+    padding: 2rem;
+}
+.contactDetail{
+    display: grid;
+    gap: .5rem;
+}
+.socialIcon{
+    display: flex;
+    font-size: 2.7rem;
+    justify-content: space-around;
+}
+.socialIcon a{
+    color: var(--heading);
+}
+.socialIcon i{
+    cursor: pointer;
+}
+/* -----------------footer end ---------------*/
+@media (max-width:768px){
+    /* -----------------header start ---------------*/
+    header{
+        margin: 2.5rem;
+    }
+    .clg_name{
+        grid-row: 2;
+        grid-column: 1 / span 2;
+    }
+    form{
+        grid-row: 1;
+        grid-column: 1;
+        justify-content: start;
+    }
+    nav{
+        grid-row: 1;
+        grid-column: 2;
+        justify-content: end;
+        display: flex;
+        position: relative;
+    }
+    .menu{
+        position: absolute;
+        top: 100%;
+        width: 50vw;
+        display: block;
+    }
+    .responsive{
+        display: none;
+    }
+    .dropDown,.nestedDropDown{
+        position: static;
+        width: 100%;
+        background: var(--hover);
+    }
+    .dropDown li{
+        padding-left: 0;
+    }
+    .menuIcon{
+        display: grid;
+    }
+    /* -----------------header end ---------------*/
+    /* -----------------link/events start ---------------*/
+    .important{
+        grid-template-columns: auto;
+        grid-template-rows: auto auto;
+        gap: 3rem;
+        padding: 2rem 3rem;
+    }
+    .impLinks{
+        grid-row: 2;
+    }
+    .latest{
+        grid-row: 1;
+    }
+    /* -----------------link/events end ---------------*/
+
+    /* -----------------gallery/tourism start ---------------*/
+    .lookOut{
+        padding: 2rem 3rem;
+    }
+    #galCarousel{
+        grid-template-columns: auto;
+    }
+    .gallery{
+        padding-bottom: 2rem;
+    }
+    .gallery a{
+        font-size: 1.5rem;
+    }
+    .tabBtn{
+        font-size: 1.6rem;
+        padding: 1.25rem 1.5rem;
+    }
+    .tabContent img{
+        width: 17rem;
+        margin: 0;
+        margin-right: 1rem;
+    }
+    .tabContent{
+        font-size: 1.4rem;
+        line-height: 2.2rem;
+    }
+    .tabContent a{
+        font-size: 1.4rem;
+        padding: .5rem 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    /* -----------------gallery/tourism end ---------------*/
+
+    /* -----------------celebration start ---------------*/
+    .celebration h1{
+        font-size: 2.5rem;
+    }
+    .celebration{
+        gap: 2rem;
+        padding: 3rem;
+    }
+    #celebrateCarousel{
+        width: 90%;
+    }
+    #celebrateCarousel .item{
+        width: 20rem;
+    }
+    /* -----------------celebration end ---------------*/
+    
+    /* -----------------page button start ---------------*/
+    .pageOptn{
+        gap: 2rem;
+        padding: 3rem;
+        grid-template-columns: repeat(4, 22%);
+    }
+    .pageBtn{
+        font-size: 1.6rem;
+    }
+    .pageIcon img{
+        width: 5rem;
+        margin: 1.2rem;
+    }
+    .pageBtn:hover .pageIcon{
+        transform: scale(1);
+    }
+    .pageBtn:active .pageIcon{
+        transform: scale(.8);
+    }
+    /* -----------------page button end ---------------*/
+
+    /* -----------------footer start ---------------*/
+    .toHome{
+        right: 1rem;
+        bottom: 1rem;
+    }
+    /* -----------------footer end ---------------*/
+}
+@media (max-width:425px){
+    html{
+        font-size: 55%;
+    }
+    /* -----------------header start ---------------*/
+    header{
+        row-gap: 2rem;
+    }
+    .clg_name img{
+        width: 22rem;
+    }
+    .clg_name{
+        margin: 0;
+    }
+    .name h1{
+        font-size: 3rem;
+        text-align: center;
+        word-spacing: 1rem;
+    }
+    .name{
+        justify-items: center;
+    }
+    .name h2{
+        font-size: 1.7rem;
+    }
+    form input{
+        width: 100%;
+        padding: .7rem 1.5rem;
+    }
+    form button{
+        padding: .7rem 1.5rem;
+    }
+    .menu{
+        width: 100vw;
+        right: -2.5rem;
+    }
+    .menu li{
+        border-bottom: .1rem solid var(--font);
+    }
+    .dropDown li{
+        border-bottom: none;
+        border-top: .1rem solid var(--font);
+    }
+    
+    /* -----------------header end ---------------*/
+
+    /* -----------------slideshow/message start ---------------*/
+    .bulletin{
+        font-size: 2rem;
+        padding-right: .5rem;
+    }
+    .message{
+        letter-spacing: 0.05rem;
+    }
+    .announcementDiv{
+        padding: 1rem;
+        align-items: end;
+        grid-row: 1;
+    }
+    .slideShow{
+        grid-row: 2;
+    }
+    /* -----------------slideshow/message end ---------------*/
+
+    /* -----------------link/events start ---------------*/
+    .title{
+        font-size: 2rem;
+    }
+    .linkDiv li a , .newsDiv li a{
+        font-size: 1.5rem;
+    }
+    .linkDiv li , .newsDiv li{
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+    .impLinks, .latest{
+        height: 45rem;
+        gap: 1rem;
+    }
+    .important, .lookOut{
+        background: var(--background);
+        padding: 2rem;
+    }
+    /* -----------------link/events end ---------------*/
+
+    /* -----------------gallery/tourism start ---------------*/
+    .lookOut{
+        grid-template-columns: auto;
+        grid-template-rows: auto auto;
+        gap: 3rem;
+    }
+    .tabContent p{
+        padding-bottom: 2rem;
+    }
+    .tabContent{
+        font-size: 1.6rem;
+    }
+    .tabContent a{
+        font-size: 1.6rem;
+        padding: .7rem 1.7rem;
+        margin-bottom: 1rem;
+    }
+    /* -----------------gallery/tourism end ---------------*/
+
+    /* -----------------celebration start ---------------*/
+    .celebration h1{
+        color: var(--font);
+        font-weight: 500;
+    }
+    .celebration{
+        background: var(--searchBack);
+    }
+    #celebrateCarousel{
+        width: 100%;
+        box-shadow: rgba(0, 0, 0, 0.24) 0rem .3rem .8rem;
+    }
+    #celebrateCarousel .item{
+        box-shadow: rgba(50, 50, 93, 0.25) .0rem .6rem 1.2rem -0.2rem, rgba(0, 0, 0, 0.3) .0rem .3rem .7rem -0.3rem;
+    }
+    /* -----------------celebration end ---------------*/
+    /* -----------------page button start ---------------*/
+    .pageOptn{
+        gap: 3rem;
+        grid-template-columns: repeat(2, 40%);
+    }
+    .pageBtn{
+        gap: 1.5rem;
+    }
+    .pageIcon img{
+        width: 6rem;
+        margin: 1.5rem;
+    }
+    /* -----------------page button end ---------------*/
+    /* -----------------footer start ---------------*/
+    .contactInfo{
+        justify-items: start;
+        grid-template-columns: auto;
+        justify-content: start;
+        padding: 1rem 2rem;
+    }
+    .address h1 , .contact h1{
+        font-size: 2.3rem;
+    }
+    .address h2 , .contactDetail{
+        font-size: 1.5rem;
+    }
+    .address , .contact{
+        padding: 1rem 0;
+    }
+    .socialIcon{
+        gap: 2rem;
+        font-size: 2.3rem;
+        justify-content: start;
+    }
+    .toHome{
+        right: 2rem;
+        bottom: 2rem;
+    }
+    /* -----------------footer end ---------------*/
+}
+@media (max-width:375px){
+    /* -----------------header start ---------------*/
+    .name h1{
+        font-size: 2.5rem;
+        word-spacing: .5rem;
+    }
+    .clg_name img{
+        width: 20rem;
+    }
+    /* -----------------header end ---------------*/
+
+    /* -----------------link/events start ---------------*/
+    .linkDiv li a , .newsDiv li a{
+        font-size: 1.5rem;
+    }
+    .linkDiv li , .newsDiv li{
+        font-size: 1.5rem;
+        margin-bottom: .7rem;
+        padding: .5rem  .7rem;
+    }
+    .important{
+        background: var(--background);
+    }
+    /* -----------------link/events end ---------------*/
+    
+    /* -----------------gallery/tourism start ---------------*/
+    .lookOut{
+        padding: 1rem 2rem;
+    }
+    .gallery{
+        gap: 1rem;
+    }
+    /* -----------------gallery/tourism end ---------------*/
+
+    /* -----------------celebration start ---------------*/
+    .celebration h1{
+        font-size: 2rem;
+    }
+    .celebration{
+        padding: 2rem 3rem;
+    }
+    #celebrateCarousel .item{
+        width: 17rem;
+    }
+    /* -----------------celebration end ---------------*/
+
+    /* -----------------page button start ---------------*/
+    .pageOptn{
+        grid-template-columns: repeat(2, 42%);
+    }
+    .pageIcon img{
+        width: 5rem;
+    }
+    /* -----------------page button end ---------------*/
+
+    /* -----------------footer start ---------------*/
+    .copyright{
+        text-align: center;
+    }
+    .address iframe{
+        width: 90%;
+    }
+    /* -----------------footer end ---------------*/
+}
+@media (max-width:320px){
+    /* -----------------header start ---------------*/
+    .clg_name img{
+        width: 16rem;
+    }
+    .name h1{
+        font-size: 2.2rem;
+        word-spacing: .5rem;
+    }
+    .name h2{
+        font-size: 1.5rem;
+    }
+    form button{
+        padding: .55rem 1rem;
+        font-size: 1.8rem;
+    }
+    .menuIcon{
+        font-size: 2.7rem;
+        align-items: center;
+    }
+    /* -----------------header end ---------------*/
+
+    /* -----------------celebration start ---------------*/
+    .celebration h1{
+        font-size: 1.8rem;
+    }
+    #celebrateCarousel{
+        width: 80%;
+    }
+    #celebrateCarousel .item{
+        width: 25rem;
+    }
+
+    /* -----------------celebration end ---------------*/
+
+    /* -----------------page button start ---------------*/
+    .pageOptn{
+        grid-template-columns: repeat(2, 45%);
+        gap: 2rem;
+    }
+    .pageBtn{
+        font-size: 1.4rem;
+        padding: 1.5rem 0;
+        gap: 1rem;
+    }
+    .pageIcon img{
+        width: 4.5rem;
+        margin: 1rem;
+    }
+    /* -----------------page button end ---------------*/
+
+    /* -----------------footer start ---------------*/
+    .address h1, .contact h1 {
+        font-size: 2rem;
+    }
+    .address, .contact {
+        padding: 0;
+    }
+    .address h2, .contactDetail {
+        font-size: 1.3rem;
+    }
+    .contactInfo{
+        padding: 1rem;
+        gap: 1rem;
+    }
+    /* -----------------footer end ---------------*/
+}
